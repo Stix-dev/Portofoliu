@@ -331,7 +331,7 @@ section{
 
 @media (min-width: 993px) {
     .plansa-grid-layout {
-        height: 550px;
+        height: 495px;
         display: flex;
         align-items: stretch;
     }
@@ -434,7 +434,7 @@ section{
     }
 
     .model-wrapper {
-        height: 350px !important;
+        height: 315px !important;
     }
 
     .plansa-right-col {
@@ -496,4 +496,61 @@ section{
 
 #main-preview-container {
     touch-action: none;
+}
+
+/* Allow page scrolling over the BIM model; image pan/zoom keeps its own gestures. */
+.sport-project #main-preview-container.is-bim-model {
+    background-color: #fff;
+    touch-action: pan-y;
+}
+
+.sport-model-canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+.sport-model-status { position: absolute; left: .75rem; top: .75rem; right: .75rem; padding: .5rem; background: #ffffffde; font-size: .85rem; pointer-events: none; }
+.sport-model-reset { position: absolute; bottom: 1rem; left: 1rem; }
+
+/* Previzualizare compacta pe telefon pentru toate proiectele. */
+@media (max-width: 767.98px) {
+    .project-page #title {
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .project-page main.container {
+        margin-top: 1rem !important;
+    }
+
+    .project-page main > .d-flex {
+        margin-bottom: 1rem !important;
+        gap: .5rem;
+    }
+
+    .project-page .plansa-title {
+        padding-bottom: 0;
+        font-size: clamp(1rem, 4.5vw, 1.5rem) !important;
+        text-align: center;
+    }
+
+    .project-page .project-summary {
+        margin: 0 0 1rem;
+        font-size: .9rem;
+    }
+
+    .project-page .model-wrapper:not(:fullscreen) {
+        height: clamp(144px, 28.8vh, 252px) !important;
+        height: clamp(144px, 28.8svh, 252px) !important;
+    }
+
+    .project-page .plansa-grid-layout {
+        gap: 0;
+    }
+
+
+    .project-page .model-wrapper:not(:fullscreen) #fullscreen-button {
+        margin: .5rem !important;
+        padding: .25rem .5rem;
+        font-size: .75rem;
+        background-color: #f8f9fa;
+        border-color: #dee2e6;
+        color: #5b6268;
+    }
 }

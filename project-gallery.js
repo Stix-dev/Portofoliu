@@ -11,6 +11,8 @@ let startY = 0;
 let initialPinchDistance = 0;
 let initialPinchScale = 1;
 let isPinching = false;
+let disposeModelViewer = null;
+let previewVersion = 0;
 
 const projectInfo = {
     'locuinte-colective.html': 'Rezidential · Planse si randari arhitecturale',
@@ -22,6 +24,9 @@ const projectInfo = {
 };
 
 function resetViewerState() {
+    previewVersion++;
+    disposeModelViewer?.();
+    disposeModelViewer = null;
     scale = 1;
     pointX = 0;
     pointY = 0;
@@ -36,6 +41,7 @@ function addFullscreenButton() {
 
 function renderImage(src, alt) {
     resetViewerState();
+    previewContainer.classList.remove('is-bim-model');
     previewContainer.innerHTML = `
         <div class="pan-scroll-container w-100 h-100 position-relative" id="zoom-container">
             <img src="${src}" alt="${alt}" class="pan-image" id="active-image" draggable="false">
@@ -62,8 +68,28 @@ function renderImage(src, alt) {
 
 function renderModel(src) {
     resetViewerState();
+    const isSportProject = document.body.classList.contains('sport-project');
+    previewContainer.classList.toggle('is-bim-model', isSportProject);
+    if (isSportProject) {
+        const version = previewVersion;
+        previewContainer.innerHTML = `
+            <canvas class="sport-model-canvas" aria-label="Sala de sport 3D: trage pentru rotire, folosește rotița sau două degete pentru zoom"></canvas>
+            <p class="sport-model-status" role="status">Se încarcă modelul 3D…</p>
+            <button class="btn btn-light btn-sm sport-model-reset" type="button" data-reframe disabled>Reîncadrează</button>
+            <button class="btn btn-dark btn-sm position-absolute bottom-0 end-0 m-3 opacity-75 z-3" id="fullscreen-button" type="button">Full Screen &#10547;</button>`;
+        addFullscreenButton();
+        import('./sala-sport-viewer.js').then(({ mountSportViewer }) => {
+            if (version !== previewVersion) return;
+            disposeModelViewer = mountSportViewer(previewContainer, src);
+        }).catch(() => {
+            if (version === previewVersion) previewContainer.querySelector('[role="status"]').textContent = 'Previzualizarea 3D nu este disponibilă. Selectează o randare din galerie.';
+        });
+        return;
+    }
+    // Perspective BIM preset; keep the GLB geometry and materials unchanged.
+    const modelSettings = 'auto-rotate shadow-intensity="1"';
     previewContainer.innerHTML = `
-        <model-viewer src="${src}" camera-controls auto-rotate shadow-intensity="1" class="w-100 h-100" alt="Model 3D"></model-viewer>
+        <model-viewer src="${src}" camera-controls ${modelSettings} class="w-100 h-100" alt="Model 3D"></model-viewer>
         <button class="btn btn-dark btn-sm position-absolute bottom-0 end-0 m-3 opacity-75 z-3" id="fullscreen-button" type="button">
             Full Screen &#10547;
         </button>

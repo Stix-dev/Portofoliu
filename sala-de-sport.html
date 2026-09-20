@@ -7,11 +7,12 @@
             Sala de sport | Portofoliu
         </title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="./CSS/style.css">
-        <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js">
+        <link rel="stylesheet" href="./CSS/style.css?v=projects-2">
+        <script type="importmap">
+            {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}
         </script>
     </head>
-    <body>
+    <body class="project-page sport-project">
         <section id="title">
             <div class="container">
                 <header class="d-flex align-items-center py-3 flex-nowrap">
@@ -35,7 +36,7 @@
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
                                 <a class="dropdown-item" href="index.html">
-                                    Acasa
+                                    Acas&#259;
                                 </a>
                             </li>
                             <li>
@@ -56,13 +57,13 @@
         <main class="container my-5">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <a href="index.html" class="btn btn-outline-secondary btn-sm">
-                    &larr; Acasa
+                    &larr; Acas&#259;
                 </a>
                 <h1 class="plansa-title mb-0 fs-4">
                     Sala de sport
                 </h1>
                 <a href="locuinte-colective.html" class="btn btn-outline-dark btn-sm">
-                    Urmatorul &rarr;
+                    Urm&#259;torul &rarr;
                 </a>
             </div>
             <section class="project-summary">
@@ -75,8 +76,8 @@
                     <div class="model-wrapper position-relative" id="main-preview-container">
                     </div>
                 </div>
-                <div class="col-lg-4 plansa-right-col">
-                    <button class="render-box p-0" type="button" data-model="./assets-3d/sala-sport.glb">
+                <div class="col-lg-4 plansa-right-col" id="project-gallery">
+                    <button class="render-box p-0" type="button" data-model="./assets-3d/Sala-sport-WEB.glb">
                         <span class="d-flex align-items-center justify-content-center bg-dark text-white fw-bold w-100 h-100">
                             Model 3D
                         </span>
@@ -105,7 +106,7 @@
                     <ul class="nav justify-content-center border-bottom border-dark mb-3">
                         <li>
                             <a href="index.html" class="nav-link px-2 text-body-secondary">
-                                Acasa
+                                Acas&#259;
                             </a>
                         </li>
                         <li>
@@ -127,7 +128,7 @@
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
         </script>
-        <script src="./project-gallery.js">
+        <script src="./project-gallery.js?v=projects-2">
         </script>
     </body>
 </html>

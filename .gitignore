@@ -1,0 +1,22 @@
+# Local development tools and working assets (not part of the public site).
+/viewer-test*
+/CODEX-*.txt
+/addon/
+/tools/
+*.blend
+*.blend1
+*.blend2
+__pycache__/
+/assets-3d/*.glb
+!/assets-3d/Sala-sport-WEB.glb
+/assets-3d/*report*.json
+/assets-3d/citrus_orchard_road_puresky_1k.hdr
+/images/Pr*/
+/images/optimized/card/*/*
+!/images/optimized/card/Pr1-Sala-de-sport/Sala-sport-1.jpg
+!/images/optimized/card/Pr2-Locuinte-colective/LC-1.jpg
+!/images/optimized/card/Pr3-Biserica-ortodoxa/Biserica-3.jpg
+!/images/optimized/card/Pr4-Locuinta-individuala/Locuinta-1.jpg
+!/images/optimized/card/Pr5-Studiu-de-insorire/Insorire-1.jpg
+!/images/optimized/card/Pr6-Locuinta-individuala-2/Locuinta-2-1.jpeg
+!/images/optimized/card/Pr7-Hala-productie/Hala-productie-2.jpg
