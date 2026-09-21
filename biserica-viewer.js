@@ -68,6 +68,7 @@ export function mountChurchViewer(container, src) {
     const direction = new THREE.Vector3(), relative = new THREE.Vector3();
     let navigationBounds = null;
     const safeCameraPosition = new THREE.Vector3();
+    const modelCenter = new THREE.Vector3();
     function corners(box) {
         const points = [];
         for (const x of [box.min.x, box.max.x]) for (const y of [box.min.y, box.max.y])
@@ -94,7 +95,8 @@ export function mountChurchViewer(container, src) {
         camera.up.set(0, 1, 0);
         camera.position.set(37.96987215471878, 9.030024740505226, 26.45220613011099);
         camera.zoom = 1;
-        controls.target.set(-4.503811488972467, -2.6018086083472003, -1.3863616381504706);
+        controls.target.copy(modelCenter);
+        controls.minDistance = radius * 1.02;
         camera.lookAt(controls.target);
         camera.updateProjectionMatrix();
         controls.update();
@@ -111,6 +113,7 @@ export function mountChurchViewer(container, src) {
         camera.aspect = width / height;
         camera.updateProjectionMatrix();
         if (loaded) {
+            controls.minDistance = radius * 1.02;
             controls.maxDistance = Math.max(radius * 12, fitDistance() * 2);
             controls.update();
             updateClipping();
@@ -233,6 +236,8 @@ export function mountChurchViewer(container, src) {
             const sc = light.shadow.camera;
             sc.position.copy(light.position); sc.lookAt(light.target.position); sc.updateMatrixWorld(true);
             const centeredBounds = box.clone().translate(center.clone().negate());
+            // Read the world-space center after the existing placement; do not move geometry.
+            new THREE.Box3().setFromObject(model).getCenter(modelCenter);
             navigationBounds = { min: centeredBounds.min.toArray(), max: centeredBounds.max.toArray() };
             modelCorners = corners(centeredBounds);
             const shadowPoints = modelCorners.map(p => p.clone());
@@ -250,7 +255,8 @@ export function mountChurchViewer(container, src) {
             const extent = radius * 2.5;
             sceneCorners = modelCorners.concat(corners(new THREE.Box3(new THREE.Vector3(-extent, elevation, -extent), new THREE.Vector3(extent, elevation, extent))));
             ao.kernelRadius = radius * .015 * .25;
-            controls.minDistance = radius * .1; controls.maxDistance = Math.max(radius * 12, fitDistance() * 2);
+            // Enclose the entire building with a model-relative 2% safety margin.
+            controls.minDistance = radius * 1.02; controls.maxDistance = Math.max(radius * 12, fitDistance() * 2);
             loaded = true; frame(); reset.disabled = false;
             renderer.shadowMap.needsUpdate = true;
             status.textContent = 'Se pregătește modelul…';

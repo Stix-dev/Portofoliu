@@ -83,6 +83,7 @@ export function mountSportViewer(container, src) {
         lastRotation.copy(camera.quaternion);
     }
     function frame() {
+        controls.minDistance = radius * 1.02;
         camera.position.set(1.5, 1.15, 1.5).normalize().multiplyScalar(fitDistance());
         camera.zoom = 1;
         controls.target.set(0, 0, 0);
@@ -102,6 +103,7 @@ export function mountSportViewer(container, src) {
         camera.aspect = width / height;
         camera.updateProjectionMatrix();
         if (loaded) {
+            controls.minDistance = radius * 1.02;
             camera.position.sub(controls.target).multiplyScalar(fitDistance() / previousFit).add(controls.target);
             controls.maxDistance = Math.max(radius * 12, fitDistance() * 2);
             controls.update();
@@ -257,7 +259,8 @@ export function mountSportViewer(container, src) {
             const extent = radius * 2.5;
             sceneCorners = modelCorners.concat(corners(new THREE.Box3(new THREE.Vector3(-extent, elevation, -extent), new THREE.Vector3(extent, elevation, extent))));
             ao.kernelRadius = radius * .015 * .9;
-            controls.minDistance = radius * .1; controls.maxDistance = Math.max(radius * 12, fitDistance() * 2);
+            // Orbit stays outside the model's bounding sphere with a 2% safety margin.
+            controls.minDistance = radius * 1.02; controls.maxDistance = Math.max(radius * 12, fitDistance() * 2);
             loaded = true; frame(); reset.disabled = false;
             renderer.shadowMap.needsUpdate = true;
             status.textContent = 'Se pregătește modelul…';
