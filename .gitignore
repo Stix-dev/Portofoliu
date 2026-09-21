@@ -9,6 +9,7 @@
 __pycache__/
 /assets-3d/*.glb
 !/assets-3d/Sala-sport-WEB.glb
+!/assets-3d/Biserica-web.glb
 /assets-3d/*report*.json
 /assets-3d/citrus_orchard_road_puresky_1k.hdr
 /images/Pr*/

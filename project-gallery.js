@@ -69,18 +69,21 @@ function renderImage(src, alt) {
 function renderModel(src) {
     resetViewerState();
     const isSportProject = document.body.classList.contains('sport-project');
-    previewContainer.classList.toggle('is-bim-model', isSportProject);
-    if (isSportProject) {
+    const isChurchProject = modelThumbnail?.dataset.viewer === 'church';
+    previewContainer.classList.toggle('is-bim-model', isSportProject || isChurchProject);
+    if (isSportProject || isChurchProject) {
         const version = previewVersion;
         previewContainer.innerHTML = `
-            <canvas class="sport-model-canvas" aria-label="Sala de sport 3D: trage pentru rotire, folosește rotița sau două degete pentru zoom"></canvas>
+            <canvas class="sport-model-canvas" aria-label="${isChurchProject ? 'Biserica' : 'Sala de sport'} 3D: trage pentru rotire, folosește rotița sau două degete pentru zoom"></canvas>
             <p class="sport-model-status" role="status">Se încarcă modelul 3D…</p>
             <button class="btn btn-light btn-sm sport-model-reset" type="button" data-reframe disabled>Reîncadrează</button>
             <button class="btn btn-dark btn-sm position-absolute bottom-0 end-0 m-3 opacity-75 z-3" id="fullscreen-button" type="button">Full Screen &#10547;</button>`;
         addFullscreenButton();
-        import('./sala-sport-viewer.js').then(({ mountSportViewer }) => {
+        const viewerModule = isChurchProject ? './biserica-viewer.js' : './sala-sport-viewer.js';
+        import(viewerModule).then(module => {
             if (version !== previewVersion) return;
-            disposeModelViewer = mountSportViewer(previewContainer, src);
+            const mountViewer = isChurchProject ? module.mountChurchViewer : module.mountSportViewer;
+            disposeModelViewer = mountViewer(previewContainer, src);
         }).catch(() => {
             if (version === previewVersion) previewContainer.querySelector('[role="status"]').textContent = 'Previzualizarea 3D nu este disponibilă. Selectează o randare din galerie.';
         });
