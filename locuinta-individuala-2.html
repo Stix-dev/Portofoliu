@@ -8,6 +8,9 @@
         </title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="./CSS/style.css?v=projects-2">
+        <script type="importmap">
+        {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}
+        </script>
     </head>
     <body class="project-page">
         <section id="title">
@@ -65,11 +68,14 @@
             </div>
             <div class="row plansa-grid-layout g-3">
                 <div class="col-lg-8 h-100">
-                    <div class="model-wrapper" id="main-preview-container">
+                    <div class="model-wrapper position-relative" id="main-preview-container">
                         <img src="./images/optimized/thumb/Pr6-Locuinta-individuala-2/Locuinta-2-1.jpeg" class="pan-image" id="active-image" alt="Locuinta individuala 2">
                     </div>
                 </div>
                 <div class="col-lg-4 plansa-right-col">
+                    <button class="render-box p-0" type="button" data-model="./assets-3d/Locuinta-2-WEB.glb" data-viewer="house-2">
+                        <span class="d-flex align-items-center justify-content-center bg-dark text-white fw-bold w-100 h-100">Model 3D</span>
+                    </button>
                     <button class="render-box p-0" data-image="./images/optimized/full/Pr6-Locuinta-individuala-2/Locuinta-2-1.jpeg">
                         <img src="./images/optimized/thumb/Pr6-Locuinta-individuala-2/Locuinta-2-1.jpeg" alt="Locuinta 2, imaginea 1">
                     </button>
@@ -116,7 +122,7 @@
         </section>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
         </script>
-        <script src="./project-gallery.js?v=projects-2">
+        <script src="./project-gallery.js?v=house-2-3d-1">
         </script>
     </body>
 </html>
