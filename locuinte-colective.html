@@ -3,17 +3,19 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>
-            Locuinte colective | Portofoliu
-        </title>
+        <title>Locuinte colective | Portofoliu</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="./CSS/style.css?v=projects-2">
+        <link rel="stylesheet" href="./project-gallery.css?v=shared-1">
+        <script type="importmap">
+        {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}
+        </script>
     </head>
-    <body class="project-page">
+    <body class="project-page project-gallery-page">
         <section id="title">
             <div class="container">
                 <header class="d-flex align-items-center py-3 flex-nowrap">
-                    <div class="text-group">
+                    <div>
                         <h1 class="display-4 fst-italic mb-0">
                             Portofoliu
                         </h1>
@@ -25,8 +27,8 @@
                         </h4>
                     </div>
                     <div class="dropdown ms-auto">
-                        <button class="btn btn-link text-dark shadow-none" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span style="font-size:2rem;line-height:1;">
+                        <button class="btn btn-link text-dark shadow-none" data-bs-toggle="dropdown">
+                            <span style="font-size:2rem">
                                 &#9776;
                             </span>
                         </button>
@@ -51,58 +53,56 @@
                 </header>
             </div>
         </section>
-        <main class="container my-5">
-            <div class="d-flex justify-content-between align-items-center mb-4">
+        <main class="container house-gallery-container my-5">
+            <div class="house-project-header d-flex justify-content-between align-items-center mb-4">
                 <a href="sala-de-sport.html" class="btn btn-outline-secondary btn-sm">
                     &larr; Anterior
                 </a>
-                <h1 class="plansa-title mb-0 fs-4">
-                    Locuinte colective
-                </h1>
+                <h1 class="plansa-title mb-0 fs-4">Locuinte colective</h1>
                 <a href="biserica-ortodoxa.html" class="btn btn-outline-dark btn-sm">
                     Urm&#259;torul &rarr;
                 </a>
             </div>
-            <div class="row plansa-grid-layout g-3">
-                <div class="col-lg-8 h-100">
-                    <div class="model-wrapper" id="main-preview-container">
-                        <img src="./images/optimized/thumb/Pr2-Locuinte-colective/LC-1.jpg" class="pan-image" id="active-image" alt="Locuinte colective">
+            <section class="project-summary"><p>Rezidențial · Planșe și randări arhitecturale</p></section>
+            <section class="house-gallery" aria-label="Galeria proiectului Locuinte colective">
+                <div class="house-gallery-stage" id="main-preview-container" tabindex="-1" aria-label="Vizualizare principală">
+                    <div class="house-gallery-content" id="house-gallery-content">
+                        <div class="house-image-surface"><img src="./images/optimized/full/Pr2-Locuinte-colective/LC-1.jpg" alt="Locuinte colective — imaginea 1" fetchpriority="high" decoding="async" draggable="false"></div>
+                    </div>
+                    <button class="house-gallery-button house-model-shortcut" type="button" data-open-model aria-controls="house-gallery-content" hidden>
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m12 2 9 5v10l-9 5-9-5V7Z M3 7l9 5 9-5 M12 12v10"/></svg>
+                        Model 3D
+                    </button>
+                    <button class="house-gallery-button house-fullscreen-open" type="button" data-fullscreen hidden>Full Screen ⛶</button>
+                    <button class="house-gallery-button house-fullscreen-close" type="button" data-exit-fullscreen aria-label="Închide Full Screen" hidden>Închide ×</button>
+                    <div class="house-image-navigation" data-image-navigation hidden>
+                        <button class="house-gallery-button house-image-prev" type="button" data-image-prev aria-label="Elementul anterior"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 6 9 12 15 18"/></svg></button>
+                        <span class="house-image-counter" data-image-counter role="status" aria-live="polite" aria-atomic="true"></span>
+                        <button class="house-gallery-button house-image-next" type="button" data-image-next aria-label="Elementul următor"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg></button>
                     </div>
                 </div>
-                <div class="col-lg-4 plansa-right-col">
-                    <button class="render-box p-0" data-image="./images/optimized/full/Pr2-Locuinte-colective/LC-1.jpg">
-                        <img src="./images/optimized/thumb/Pr2-Locuinte-colective/LC-1.jpg" alt="Locuinte colective 1">
-                    </button>
-                    <button class="render-box p-0" data-image="./images/optimized/full/Pr2-Locuinte-colective/LC-2.jpg">
-                        <img src="./images/optimized/thumb/Pr2-Locuinte-colective/LC-2.jpg" alt="Locuinte colective 2">
-                    </button>
-                    <button class="render-box p-0" data-image="./images/optimized/full/Pr2-Locuinte-colective/LC-3.jpg">
-                        <img src="./images/optimized/thumb/Pr2-Locuinte-colective/LC-3.jpg" alt="Locuinte colective 3">
-                    </button>
-                    <button class="render-box p-0" data-image="./images/optimized/full/Pr2-Locuinte-colective/LC-4.jpg">
-                        <img src="./images/optimized/thumb/Pr2-Locuinte-colective/LC-4.jpg" alt="Locuinte colective 4">
-                    </button>
-                    <button class="render-box p-0" data-image="./images/optimized/full/Pr2-Locuinte-colective/LC-5.jpg">
-                        <img src="./images/optimized/thumb/Pr2-Locuinte-colective/LC-5.jpg" alt="Locuinte colective 5">
-                    </button>
+                <div class="house-thumbnail-carousel">
+                    <button class="house-carousel-arrow" type="button" data-scroll-prev aria-label="Derulează miniaturile spre stânga" aria-controls="house-thumbnails" hidden><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 6 9 12 15 18"/></svg></button>
+                    <div class="house-thumbnail-track" id="house-thumbnails" role="group" aria-label="Alege un element al galeriei"></div>
+                    <button class="house-carousel-arrow" type="button" data-scroll-next aria-label="Derulează miniaturile spre dreapta" aria-controls="house-thumbnails" hidden><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg></button>
                 </div>
-            </div>
+            </section>
         </main>
         <section id="footer">
             <div class="container">
                 <footer class="py-3 my-4">
                     <ul class="nav justify-content-center border-bottom border-dark mb-3">
-                        <li class="nav-item">
+                        <li>
                             <a href="index.html" class="nav-link px-2 text-body-secondary">
                                 Acas&#259;
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li>
                             <a href="CV.html" class="nav-link px-2 text-body-secondary">
                                 CV
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li>
                             <a href="Contact.html" class="nav-link px-2 text-body-secondary">
                                 Contact
                             </a>
@@ -116,7 +116,6 @@
         </section>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
         </script>
-        <script src="./project-gallery.js?v=projects-2">
-        </script>
+        <script type="module" src="./project-gallery.js?v=shared-1"></script>
     </body>
 </html>

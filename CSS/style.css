@@ -508,6 +508,17 @@ section{
 .sport-model-status { position: absolute; left: .75rem; top: .75rem; right: .75rem; padding: .5rem; background: #ffffffde; font-size: .85rem; pointer-events: none; }
 .sport-model-reset { position: absolute; bottom: 1rem; left: 1rem; }
 
+.project-video { display: block; width: 100%; height: 100%; border: 0; }
+.project-video-thumbnail { position: relative; }
+.project-video-thumbnail span { position: absolute; bottom: .5rem; left: .5rem; padding: .3rem .6rem; color: white; background: #111c; border-radius: 3px; }
+.project-media-navigation { position: absolute; inset: 0; pointer-events: none; z-index: 3; }
+.project-media-navigation button { position: absolute; top: 50%; transform: translateY(-50%); display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid #ccd3d9; border-radius: 50%; color: #334353; background: #ffffffe6; pointer-events: auto; }
+.project-media-navigation svg { display: block; flex: none; pointer-events: none; }
+.project-media-prev { left: .65rem; }
+.project-media-next { right: .65rem; }
+.project-media-navigation button:hover { background: #fff; border-color: #8796a3; }
+.project-media-navigation button:focus-visible { outline: 3px solid #59758c; outline-offset: 2px; }
+
 /* Previzualizare compacta pe telefon pentru toate proiectele. */
 @media (max-width: 767.98px) {
     .project-page #title {
